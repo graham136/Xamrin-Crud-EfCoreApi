@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="XamrinEfCoreApi.MainPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+
+    <StackLayout>
+        <Frame
+            Padding="24"
+            BackgroundColor="#2196F3"
+            CornerRadius="0">
+            <Label
+                FontSize="36"
+                HorizontalTextAlignment="Center"
+                Text="Users"
+                TextColor="White" />
+        </Frame>
+        <Button
+            BackgroundColor="LightBlue"
+            Clicked="OnAdd"
+            Text="Add User" />
+        <ListView x:Name="UsersList">
+            <ListView.Header>
+                <StackLayout Orientation="Horizontal">
+                    <Label
+                        FontSize="Medium"
+                        HorizontalOptions="FillAndExpand"
+                        Text="User Name" />
+                    <Label
+                        FontSize="Medium"
+                        HorizontalOptions="FillAndExpand"
+                        Text="User Password" />
+                    <Label
+                        FontSize="Medium"
+                        HorizontalOptions="FillAndExpand"
+                        Text="Action" />
+
+                </StackLayout>
+            </ListView.Header>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <ViewCell.ContextActions>
+                            <MenuItem
+                                Clicked="OnEdit"
+                                CommandParameter="{Binding .}"
+                                Text="Edit" />
+                            <MenuItem
+                                Clicked="OnDelete"
+                                CommandParameter="{Binding .}"
+                                IsDestructive="True"
+                                Text="Delete" />
+                        </ViewCell.ContextActions>
+                        <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
+                            <Label HorizontalOptions="FillAndExpand" Text="{Binding UserName}" />
+                            <Label HorizontalOptions="FillAndExpand" Text="{Binding UserPassword}" />
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <ActivityIndicator x:Name="Loader" />
+
+        <Button
+            BackgroundColor="Orange"
+            Clicked="OnExit"
+            Text="Exit" />
+    </StackLayout>
+
+</ContentPage>

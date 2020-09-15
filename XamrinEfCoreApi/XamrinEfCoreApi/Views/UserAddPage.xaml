@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="XamrinEfCoreApi.Views.UserAddPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+    <ContentPage.Content>
+        <StackLayout>
+            <Frame
+                Padding="24"
+                BackgroundColor="#2196F3"
+                CornerRadius="0">
+                <Label
+                    FontSize="36"
+                    HorizontalTextAlignment="Center"
+                    Text="Add User"
+                    TextColor="White" />
+            </Frame>
+            <Label Text="User Name" />
+            <Entry
+                x:Name="UserName"
+                FontSize="Medium"
+                HorizontalOptions="FillAndExpand"
+                Placeholder="User Name"
+                Text="{Binding UserName}" />
+            <Label Text="Password" />
+            <Entry
+                x:Name="UserPassword"
+                FontSize="Medium"
+                HorizontalOptions="FillAndExpand"
+                Placeholder="Password"
+                Text="{Binding UserPassword}" />
+
+            <Button
+                BackgroundColor="Azure"
+                Clicked="SaveButton_Clicked"
+                Text="Add User" />
+            <Button
+                BackgroundColor="Azure"
+                Clicked="BackButton_Clicked"
+                Text="Back" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
