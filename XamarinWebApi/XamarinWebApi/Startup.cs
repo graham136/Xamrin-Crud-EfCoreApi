@@ -31,6 +31,11 @@ namespace XamarinWebApi
 
             services.AddDbContext<XamarinWebApiContext>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("XamarinWebApiContext")));
+
+            services.AddCors(c =>
+            {
+                c.AddPolicy("AllowOrigin", options => options.AllowAnyOrigin());
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -39,9 +44,14 @@ namespace XamarinWebApi
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-            }
+            }            
 
             app.UseHttpsRedirection();
+
+            app.UseCors(x => x
+            .AllowAnyOrigin()
+            .AllowAnyMethod()
+            .AllowAnyHeader());
 
             app.UseRouting();
 
